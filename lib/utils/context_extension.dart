@@ -19,7 +19,7 @@ extension ContextExtensions on BuildContext {
   Future<T> runTask<T>(Future<T> task, {Stream<double>? percent}) async {
     var overlayEntry = OverlayEntry(
         builder: (context) => PageLoadingOverlay(percent: percent));
-    Overlay.of(this)?.insert(overlayEntry);
+    Overlay.of(this).insert(overlayEntry);
     try {
       final data = await task;
       overlayEntry.remove();

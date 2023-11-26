@@ -3,7 +3,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -13,7 +13,8 @@ dependencies:
   # StateManagement
   flutter_bloc:
   tuple:
-  freezed_annotation:
+  freezed_annotation: any
+
   # JsonParser
   json_annotation:
 
@@ -34,13 +35,18 @@ dependencies:
 
   #auth_nav
   auth_nav:
-    git: https://github.com/dangngocduc/auth_nav
+    git:
+      url: https://github.com/dangngocduc/auth_nav
+      ref: main
+
 
   oauth2_dio:
-    git: https://github.com/dangngocduc/oauth2_dio
+    git:
+      url: https://github.com/dangngocduc/oauth2_dio
+      ref: main
 
   # Collections and utilities functions and classes related to collections.
-  collection: 1.15.0
+  collection: 1.18.0
 
 
 dev_dependencies:

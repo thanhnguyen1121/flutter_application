@@ -56,6 +56,7 @@ class NavigatorSupportState extends State<NavigatorSupport> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     return WillPopScope(
       child: Navigator(
         pages: widget.pages,

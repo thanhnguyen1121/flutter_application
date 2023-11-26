@@ -73,7 +73,7 @@ class LoadingPercentWidget extends StatelessWidget {
           )),
           Text(
             '$percent%',
-            style: Theme.of(context).textTheme.caption?.copyWith(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: Colors.blue,
                 ),
           )

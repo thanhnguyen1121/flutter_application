@@ -1,6 +1,6 @@
 # flutter_application
 
-This template base on Flutter 2.10.3
+This template base on Flutter 3.16.0
 
 ## Structure
 - assets
