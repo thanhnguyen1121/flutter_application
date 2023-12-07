@@ -69,6 +69,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Notification`
+  String get notify {
+    return Intl.message(
+      'Notification',
+      name: 'notify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gender`
+  String get gender {
+    return Intl.message(
+      'Gender',
+      name: 'gender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Male`
+  String get male {
+    return Intl.message(
+      'Male',
+      name: 'male',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `female`
+  String get female {
+    return Intl.message(
+      'female',
+      name: 'female',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

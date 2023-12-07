@@ -9,6 +9,8 @@ import 'data/datasource/local/local_service.dart';
 import 'generated/l10n.dart';
 import 'themes.dart';
 
+final GlobalKey appKey = GlobalKey();
+
 class Application extends StatefulWidget {
   const Application({Key? key}) : super(key: key);
 
@@ -29,25 +31,36 @@ class _ApplicationState extends State<Application> {
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate
       ],
-      home: AuthNavigation(
-        //Flow after user login success this page need user NavigatorSupport
-        authorizedBuilder: (context) => const MainNavigator(),
+      home: Scaffold(
+        key: appKey,
+        body: AuthNavigation(
+          //Flow after user login success this page need user NavigatorSupport
+          authorizedBuilder: (context) => const MainNavigator(),
 
-        //Flow after user login success
-        splashScreen: AppSplashPage((context) async {
-          if (GetIt.instance.get<LocalService>().isAuthorized()) {
-            await GetIt.instance.get<AuthBloc>().initializeApp();
-            return AuthNavigationState.authorized();
-          } else {
-            return AuthNavigationState.unAuthorized();
-          }
-        }),
+          //Flow after user login success
+          splashScreen: AppSplashPage((context) async {
+            if (GetIt.instance.get<LocalService>().isAuthorized()) {
+              await GetIt.instance.get<AuthBloc>().initializeApp();
+              return AuthNavigationState.authorized();
+            } else {
+              return AuthNavigationState.unAuthorized();
+            }
+          }),
 
-        //Flow user login success this page need user NavigatorSupport
-        unAuthorizedBuilder: (context) => const AuthenticationNavigator(),
+          //Flow user login success this page need user NavigatorSupport
+          unAuthorizedBuilder: (context) => const AuthenticationNavigator(),
 
-        //Customize if application is have this feature!!
-        maintenanceBuilder: (context) => Container(),
+          //Customize if application is have this feature!!
+          maintenanceBuilder: (context) => Container(
+            alignment: Alignment.center,
+            child: const Text("Maintenance page"),
+          ),
+
+          guestBuilder: (context) => Container(
+            alignment: Alignment.center,
+            child: const Text("Guest page"),
+          ),
+        ),
       ),
     );
   }

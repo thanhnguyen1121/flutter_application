@@ -37,16 +37,17 @@ dependencies:
   auth_nav:
     git:
       url: https://github.com/dangngocduc/auth_nav
-      ref: main
+      ref: master
 
 
   oauth2_dio:
     git:
       url: https://github.com/dangngocduc/oauth2_dio
-      ref: main
+      ref: master
 
-  # Collections and utilities functions and classes related to collections.
   collection: 1.18.0
+
+  path_provider: ^2.1.1
 
 
 dev_dependencies:

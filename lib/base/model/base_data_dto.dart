@@ -6,6 +6,7 @@ part 'base_data_dto.g.dart';
 )
 class BaseDataDto<T> {
 
+  @JsonKey(name: 'data')
   T? data;
 
   BaseDataDto();
