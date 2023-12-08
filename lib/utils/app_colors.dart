@@ -20,6 +20,7 @@ class AppColors {
   static const Color color8B1F17 = Color(0xFFC6413A);
   static const Color colorBlue500 = Color(0xff228eeb);
   static const Color colorBrand800 = Color(0xff066132);
+  static const Color appBottomNavigationColor = Color(0xff217B56);
   static const Color colorInk500 = Color(0xff2c3e50);
   static const Color colorOrange400 = Color(0xffef834e);
   static const Color colorOrange500 = Color(0xffeb6422);

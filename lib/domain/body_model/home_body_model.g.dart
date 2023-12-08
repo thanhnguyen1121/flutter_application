@@ -10,10 +10,12 @@ HomeBodyModel _$HomeBodyModelFromJson(Map<String, dynamic> json) =>
     HomeBodyModel(
       name: json['name'] as String?,
       address: json['address'] as String?,
-    );
+    )..pageSize = json['pageSize'] as int? ?? 20;
 
 Map<String, dynamic> _$HomeBodyModelToJson(HomeBodyModel instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'pageSize': instance.pageSize,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {

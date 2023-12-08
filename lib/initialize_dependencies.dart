@@ -1,6 +1,9 @@
 import 'package:auth_nav/auth_nav.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_application/data/repositories/notification_repository.dart';
+import 'package:flutter_application/domain/repository/notification/notification_repository_impl.dart';
 import 'package:flutter_application/ui/blocs/blocs.dart';
+import 'package:flutter_application/ui/blocs/notification/notification_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:oauth2_dio/oauth2_dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,6 +21,8 @@ Future initializeDependencies() async {
 
   GetIt.instance.registerSingleton(AuthRepository());
 
+  GetIt.instance.registerSingleton<NotificationRepository>(NotificationRepositoryImpl());
+
   //region Local Service
   GetIt.instance.registerSingleton(await SharedPreferences.getInstance());
 
@@ -25,15 +30,13 @@ Future initializeDependencies() async {
   //endregion
 
   //region OAuth Manager
-  Oauth2Manager<AuthenticationDto> _oauth2manager = Oauth2Manager<
-          AuthenticationDto>(
+  Oauth2Manager<AuthenticationDto> _oauth2manager = Oauth2Manager<AuthenticationDto>(
       currentValue: GetIt.instance.get<LocalService>().getAuthenticationDto(),
       onSave: (value) {
         GetIt.instance.get<LocalService>().saveAuth(value as AuthenticationDto);
       });
 
-  GetIt.instance
-      .registerSingleton<Oauth2Manager<AuthenticationDto>>(_oauth2manager);
+  GetIt.instance.registerSingleton<Oauth2Manager<AuthenticationDto>>(_oauth2manager);
 
   dio.interceptors.add(
     Oauth2Interceptor(
@@ -51,4 +54,6 @@ Future initializeDependencies() async {
   GetIt.instance.registerSingleton(AuthNavigationBloc());
 
   GetIt.instance.registerSingleton(AuthBloc());
+
+  GetIt.instance.registerSingleton(NotificationBloc());
 }

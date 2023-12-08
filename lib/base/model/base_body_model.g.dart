@@ -7,7 +7,11 @@ part of 'base_body_model.dart';
 // **************************************************************************
 
 BaseBodyModel _$BaseBodyModelFromJson(Map<String, dynamic> json) =>
-    BaseBodyModel();
+    BaseBodyModel(
+      pageSize: json['pageSize'] as int? ?? 20,
+    );
 
 Map<String, dynamic> _$BaseBodyModelToJson(BaseBodyModel instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'pageSize': instance.pageSize,
+    };
