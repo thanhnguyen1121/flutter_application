@@ -7,6 +7,7 @@ import 'package:flutter_application/base/model/error_dto.dart';
 import 'package:flutter_application/constants/end_point/end_point.dart';
 import 'package:flutter_application/data/data.dart';
 import 'package:flutter_application/data/dto/notification_dto.dart';
+import 'package:flutter_application/utils/local_log.dart';
 
 class NotificationService extends BaseApiService {
   Future<List<NotificationDto>> getNotificationUnread(BaseBodyModel searchModel) async {
@@ -18,7 +19,8 @@ class NotificationService extends BaseApiService {
           dataList.add(NotificationDto.fromJson(element as Map<String, dynamic>));
         }
       }
-      return dataList ?? [];
+
+      return dataList;
     } on DioError catch (error) {
       if (error.response?.statusCode == 500) {
         throw ErrorDto(
@@ -27,7 +29,7 @@ class NotificationService extends BaseApiService {
         throw ErrorDto.fromJson(jsonDecode(error.response.toString()));
       }
     } catch (exception) {
-      print("${(exception as Error).stackTrace}");
+      localLog(exception: exception, name: 'NotificationService');
       if (exception is ErrorDto) {
         rethrow;
       } else {

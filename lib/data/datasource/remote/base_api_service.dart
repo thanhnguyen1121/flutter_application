@@ -12,9 +12,15 @@ class BaseApiService {
     required String endPoint,
     required K bodyModel,
     required T Function(Object? json) fromJsonT,
+    CancelToken? cancelToken,
   }) async {
     try {
-      final response = await dio.get(endPoint, queryParameters: bodyModel.toJson());
+      final response = await dio.get(
+        endPoint,
+        cancelToken: cancelToken,
+        queryParameters: bodyModel.toJson(),
+      );
+
       final data = BaseDataListDto<T>.fromJson(
         response.data,
         (json) => fromJsonT(json as Map<String, dynamic>),
@@ -36,9 +42,14 @@ class BaseApiService {
     required String endPoint,
     required K bodyModel,
     required T Function(Object? json) fromJsonT,
+    CancelToken? cancelToken,
   }) async {
     try {
-      final response = await dio.get(endPoint, queryParameters: bodyModel.toJson());
+      final response = await dio.get(
+        endPoint,
+        cancelToken: cancelToken,
+        queryParameters: bodyModel.toJson(),
+      );
       final data = BaseDataDto<T>.fromJson(
         response.data,
         (json) => fromJsonT(json as Map<String, dynamic>),
@@ -60,12 +71,17 @@ class BaseApiService {
     required String endPoint,
     required K bodyModel,
     required T Function(Object? json) fromJsonT,
+    CancelToken? cancelToken,
   }) async {
     try {
-      final response = await dio.post(endPoint, data: bodyModel.toJson());
+      final response = await dio.post(
+        endPoint,
+        data: bodyModel.toJson(),
+        cancelToken: cancelToken,
+      );
       final data = BaseDataListDto<T>.fromJson(
         response.data,
-            (json) => fromJsonT(json as Map<String, dynamic>),
+        (json) => fromJsonT(json as Map<String, dynamic>),
       );
       return data.data ?? [];
     } on DioError catch (error) {
@@ -84,9 +100,14 @@ class BaseApiService {
     required String endPoint,
     required K bodyModel,
     required T Function(Object? json) fromJsonT,
+    CancelToken? cancelToken,
   }) async {
     try {
-      final response = await dio.post(endPoint, data: bodyModel.toJson());
+      final response = await dio.post(
+        endPoint,
+        data: bodyModel.toJson(),
+        cancelToken: cancelToken
+      );
       final data = BaseDataDto<T>.fromJson(
         response.data,
         (json) => fromJsonT(json as Map<String, dynamic>),

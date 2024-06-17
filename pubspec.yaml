@@ -36,13 +36,13 @@ dependencies:
   #auth_nav
   auth_nav:
     git:
-      url: https://github.com/dangngocduc/auth_nav
+      url: https://github.com/thanhnguyen1121/auth_nav
       ref: master
 
 
   oauth2_dio:
     git:
-      url: https://github.com/dangngocduc/oauth2_dio
+      url: https://github.com/thanhnguyen1121/oauth2_dio
       ref: master
 
   collection: 1.18.0

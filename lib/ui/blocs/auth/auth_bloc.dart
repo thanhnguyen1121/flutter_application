@@ -1,5 +1,4 @@
 import 'package:auth_nav/auth_nav.dart';
-import 'package:flutter_application/base/model/error_dto.dart';
 import 'package:flutter_application/data/dto/dto.dart';
 import 'package:flutter_application/data/repositories/repositories.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
